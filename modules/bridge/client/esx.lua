@@ -13,7 +13,7 @@
 if GetResourceState('es_extended') ~= 'started' then return end
 
 local ESX = exports['es_extended']:getSharedObject()
-
+local Config = lib.require('config')
 
 RegisterNetEvent('esx:playerLoaded', function(xPlayer)
     ESX.PlayerLoaded = true
