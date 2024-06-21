@@ -3,7 +3,7 @@ game "gta5"
 
 author "StevoScripts"
 description "Citizen System."
-version "1.0.0"
+version "1.1.0"
 
 shared_scripts {
     'config.lua',
