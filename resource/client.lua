@@ -16,6 +16,16 @@ local Config = lib.require('config')
 local stevo_lib = exports['stevo_lib']:import()
 local examCompleted = false
 
+function shuffleQuestions(t)
+    local shuffled = {}
+    for i = #t, 1, -1 do
+        local rand = math.random(i)
+        t[i], t[rand] = t[rand], t[i]
+        table.insert(shuffled, t[i])
+    end
+    return shuffled
+end
+
 function beginExam()
     local ped = PlayerPedId()	
     if ped then
@@ -34,7 +44,9 @@ function beginExam()
         end
 
         local score = 0
-        for _, question in ipairs(Config.Questions) do
+        local questions =  shuffleQuestions(Config.Questions)
+        for _, question in ipairs(questions) do
+            :: StartQuestion ::
             local options = {}
             for _, option in ipairs(question.options) do
                 table.insert(options, {type = 'checkbox', label = option.label})
@@ -44,8 +56,15 @@ function beginExam()
                 stevo_lib.Notify('You cancelled the exam', 'error')
                 return
             end
+            local answers = 0
             for i, answer in ipairs(input) do
-                print('hello')
+                if answer then
+                    answers = answers + 1
+                end
+            end
+            if answers == #input then stevo_lib.Notify('You cannot select all of the options!', 'error') goto StartQuestion end
+            for i, answer in ipairs(input) do
+                
                 if answer and question.options[i].correct then
                     score = score + 1
                 end
@@ -99,7 +118,7 @@ function escapeCitizenship()
 
     FreezeEntityPosition(cache.ped, false)
     DoScreenFadeIn(1000) 
-    stevo_lib.Notify(Config.escapeNotify, 'escape')
+    stevo_lib.Notify(Config.escapeNotify, 'error')
 end
 
 function loadCitizenship()
