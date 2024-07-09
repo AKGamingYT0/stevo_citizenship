@@ -32,7 +32,7 @@ return {
         targerdistance = 2.0,
     },
 
-    -- DO NOT MODIFY UNLESS YOU ARE GOING TO MODIFY citizenZone
+    -- DO NOT MODIFY UNLESS YOU ARE GOING TO MODIFY citizenZone.
     spawnCoords = vec4(-1371.2579, -471.2089, 72.0422, 6.8564),
     examCoords = vec3(-1372.2820, -465.5251, 71.8305), -- vec3(-1372.2820, -465.5251, 71.8305)
     completionCoords = vec4(-1034.9070, -2733.7327, 20.1693, 331.5052),

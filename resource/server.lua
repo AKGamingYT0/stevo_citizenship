@@ -15,7 +15,7 @@ end
 
 lib.callback.register('stevo_citizenship:checkCitizenship', function(source)
 
-    local identifier = GetIdentifier(source)
+    local identifier = stevo_lib.getIdentifier(source)
     local isCitizen = false
 
     local row = MySQL.single.await('SELECT * FROM `stevo_citizenship` WHERE `citizen` = ? LIMIT 1', {
@@ -30,7 +30,7 @@ end)
 
 lib.callback.register('stevo_citizenship:addCitizenship', function(source)
 
-    local identifier = GetIdentifier(source)
+    local identifier = stevo_lib.getIdentifier(source)
 
     local id = MySQL.insert.await('INSERT INTO `stevo_citizenship` (citizen) VALUES (?)', {
         identifier
