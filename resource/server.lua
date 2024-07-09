@@ -1,3 +1,5 @@
+local stevo_lib = exports['stevo_lib']:import()
+
 local success, result = pcall(MySQL.scalar.await, 'SELECT 1 FROM stevo_citizenship')
 
 if not success then

@@ -7,14 +7,14 @@
  |_____/ \__\___| \_/ \___/  |_____/ \___|_|  |_| .__/ \__|___/
                                                 | |            
                                                 |_|             
-	  StevoScripts | https://discord.gg/stevoscripts
+      Discord: https://discord.gg/stevoscripts
+      Website: https://stevoscripts.com
+      Github: https://github.com/stevoscriptss
 ]]--	
 
 local Config = lib.require('config')
+local stevo_lib = exports['stevo_lib']:import()
 local examCompleted = false
-
-
-
 
 function beginExam()
     local ped = PlayerPedId()	
@@ -41,10 +41,11 @@ function beginExam()
             end
             local input = lib.inputDialog(question.title, options)
             if not input then 
-                Notify('You cancelled the exam', 'error')
+                stevo_lib.Notify('You cancelled the exam', 'error')
                 return
             end
             for i, answer in ipairs(input) do
+                print('hello')
                 if answer and question.options[i].correct then
                     score = score + 1
                 end
@@ -66,7 +67,7 @@ function beginExam()
             examCompleted = true
             DoScreenFadeOut(800)
             Wait(800)
-            SetEntityCoords(ped, Config.completionCoords.x, Config.completionCoords.y, Config.completionCoords.z, 1, 0, 0, 1)
+            SetEntityCoords(ped, Config.completionCoords, 1, 0, 0, 1)
             SetEntityHeading(ped, Config.completionCoords.h)
             Wait(500)
             DoScreenFadeIn(1000)
@@ -98,7 +99,7 @@ function escapeCitizenship()
 
     FreezeEntityPosition(cache.ped, false)
     DoScreenFadeIn(1000) 
-    Notify(Config.escapeNotify, 'escape')
+    stevo_lib.Notify(Config.escapeNotify, 'escape')
 end
 
 function loadCitizenship()
@@ -128,7 +129,7 @@ function loadCitizenship()
 
     FreezeEntityPosition(cache.ped, false)
     DoScreenFadeIn(1000) 
-    Notify(Config.loadNotify, 'info')
+    stevo_lib.Notify(Config.loadNotify, 'info')
 end
 
 function OnPlayerLoaded()
@@ -143,5 +144,9 @@ AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() ~= resourceName) then
       return
     end
+    OnPlayerLoaded()
+end)
+
+RegisterNetEvent('stevo_lib:playerLoaded', function()
     OnPlayerLoaded()
 end)

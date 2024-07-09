@@ -11,32 +11,29 @@
 ]]--	
 
 local Config = lib.require('config')
+local stevo_lib = exports['stevo_lib']:import()
 
 if Config.interaction.type ~= "target" then return end
 
 function loadInteractions()
 
 
-    exports.ox_target:addSphereZone({
-        coords = Config.examCoords,
-        radius = Config.interaction.targetradius,
-        debug = false,
+    local options = {
         options = {
             {
-                name = 'stevo_citizenship',
-                icon =  Config.interaction.targeticon,
-                label = Config.interaction.targetlabel,
-                distance = Config.interaction.targetdistance,
-                onSelect = function()
-                    beginExam()
-                end
+            name = 'penis',
+            type = "client",
+            action = beginExam,
+            icon =  Config.interaction.targeticon,
+            label = Config.interaction.targetlabel,
             }
-        }
-    })    
-
-
+        },
+        distance = Config.interaction.targetdistance,
+        rotation = 45
+    }
+    
+    stevo_lib.target.AddBoxZone('stevo_citizenship:beginExam', Config.examCoords, Config.interaction.targetradius, options)
 
 
     
 end
-
