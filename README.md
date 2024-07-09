@@ -1,5 +1,11 @@
 ## stevo_citizenship - 1.2.0
-A citizenship exam resource that stops trolls and protects your server!
+Exam for new players to project your server from trolls!
+
+- Exploit Protection
+- Highly Configurable
+- 100% Optimized
+- Supports QB & OX Target & markers
+- Supports ESX, QBCore, Qbox, Ox Core
 
 Preview: https://youtu.be/rwDRBNwxC-s
 <br>
