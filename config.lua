@@ -28,7 +28,7 @@ return {
 
         targeticon = 'fas fa-passport', -- https://fontawesome.com/icons
         targetlabel = 'Begin Citizenship Exam',
-        targetradius = 3.0, 
+        targetradius = vector3(4, 4, 4), 
         targerdistance = 2.0,
     },
 
@@ -108,7 +108,3 @@ return {
     },
     
 }
-
-
-
-

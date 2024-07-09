@@ -1,9 +1,9 @@
 fx_version "cerulean"
 game "gta5"
 
-author "StevoScripts"
-description "Citizen System."
-version "1.0.5"
+author "StevoScripts | steve"
+description "Citizenship Exam System for preventing trolls!"
+version "1.2.0"
 
 shared_scripts {
     'config.lua',
@@ -11,20 +11,19 @@ shared_scripts {
 }
 
 client_scripts {
-    'modules/bridge/client/**.lua',
-    'modules/citizenship/client.lua',
-    'modules/interactions/**.lua',
+    'resource/client.lua',
+    'resource/interactions/**.lua',
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'modules/bridge/server/*.lua',
-    'modules/citizenship/server.lua',
+    'resource/server.lua',
 }
 
 dependencies {
     'ox_lib',
     'oxmysql',
+    'stevo_lib',
     '/server:4500',
 }
    
